@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocorrências - EyesEverywhere</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">EyesEverywhere</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="about.html">Sobre Nós</a></li>
+        <li><a href="ocorrencias.html" class="active">Ocorrências</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="header-pequeno">
+    <div class="header-content">
+      <h1>Ocorrências</h1>
+      <p>Início > Ocorrências</p>
+    </div>
+  </header>
+
+  <section class="section">
+
+    <div class="intro-ocorrencias">
+      <p>
+        Consulta aqui as ocorrências já registadas, bem como os tipos de intervenções que realizamos para preservar o património. Também podes registar novas ocorrências, contribuindo ativamente para a conservação dos espaços monitorizados.
+      </p>
+    </div>
+    
+    <div class="tabs">
+      <button class="tab active" onclick="mostrarSecao('adecorrer')">A Decorrer</button>
+      <button class="tab" onclick="mostrarSecao('concluido')">Concluído</button>
+      <button class="tab" onclick="mostrarSecao('novo')">Registar</button>
+    </div>
+
+    <div id="adecorrer" class="secao-ocorrencia ativa">
+      <div class="bloco-ocorrencias">
+        <div class="barra-pesquisa-wrapper">
+          <input type="text" placeholder="Pesquisar por local ou referência..." class="barra-pesquisa">
+          <button class="botao-pesquisar-interna">🔍</button>
+        </div>
+    
+        <div class="lista-ocorrencias">
+          <div class="ocorrencia-card a-decorrer">
+            <div class="info-topo">
+              <p><strong>#323</strong> – Passadiço do Sistelo</p>
+              <span class="data-ocorrencia">20/04/2025</span>
+            </div>
+            <p>Limpeza de vegetação acumulada e manutenção do corrimão.</p>
+          </div>
+    
+          <div class="ocorrencia-card a-decorrer">
+            <div class="info-topo">
+              <p><strong>#322</strong> – Trilho da Peneda</p>
+              <span class="data-ocorrencia">15/04/2025</span>
+            </div>
+            <p>Inspeção em curso devido a possível instabilidade no terreno.</p>
+          </div>
+    
+          <div class="ocorrencia-card a-decorrer">
+            <div class="info-topo">
+              <p><strong>#318</strong> – Castelo de Leiria</p>
+              <span class="data-ocorrencia">12/04/2025</span>
+            </div>
+            <p>Revisão estrutural em torre lateral — em fase de verificação.</p>
+          </div>
+
+          <div class="ocorrencia-card a-decorrer">
+            <div class="info-topo">
+              <p><strong>#315</strong> – Muralha Fernandina</p>
+              <span class="data-ocorrencia">08/04/2025</span>
+            </div>
+            <p>Inspeção de fissuras e infiltrações — aguarda relatório técnico.</p>
+          </div>
+
+          <div class="ocorrencia-card a-decorrer">
+            <div class="info-topo">
+              <p><strong>#310</strong> – Trilho do Rio Febros</p>
+              <span class="data-ocorrencia">02/04/2025</span>
+            </div>
+            <p>Remoção de lixo acumulado e substituição de corrimões partidos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="concluido" class="secao-ocorrencia">
+        <div class="bloco-ocorrencias">
+          <div class="barra-pesquisa-wrapper">
+            <input type="text" placeholder="Pesquisar por local ou referência..." class="barra-pesquisa">
+            <button class="botao-pesquisar-interna">🔍</button>
+          </div>
+      
+          <div class="lista-ocorrencias">
+            <div class="ocorrencia-card concluido">
+              <div class="info-topo">
+                <p><strong>#301</strong> – Miradouro do Bom Jesus</p>
+                <span class="data-ocorrencia">20/02/2025</span>
+              </div>
+              <p>Reparação de guarda metálica e limpeza geral.</p>
+            </div>
+      
+            <div class="ocorrencia-card concluido">
+              <div class="info-topo">
+                <p><strong>#287</strong> – Castelo de Almourol</p>
+                <span class="data-ocorrencia">10/02/2025</span>
+              </div>
+              <p>Reparação de guarda metálica e limpeza geral.</p>
+            </div>
+
+            <div class="ocorrencia-card concluido">
+              <div class="info-topo">
+                <p><strong>#278</strong> – Igreja de São Francisco</p>
+                <span class="data-ocorrencia">20/01/2025</span>
+              </div>
+              <p>Restauro das fachadas e limpeza do pátio exterior.</p>
+            </div>
+
+            <div class="ocorrencia-card concluido">
+              <div class="info-topo">
+                <p><strong>#266</strong> – Fortaleza de Valença</p>
+                <span class="data-ocorrencia">14/12/2024</span>
+              </div>
+              <p>Instalação de sinalética turística e reparação de muros.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+
+    <div id="novo" class="secao-ocorrencia" style="display: none;">
+        <form class="formulario-ocorrencia">
+          <div class="dupla">
+            <input type="date" name="data" placeholder="Data" required>
+            <input type="text" name="localizacao" placeholder="Localização" required>
+          </div>
+      
+          <select name="tipo" required>
+            <option value="">Tipo de ocorrência</option>
+            <option value="estrutura">Estrutura danificada</option>
+            <option value="sinalizacao">Problema de sinalização</option>
+            <option value="limpeza">Necessidade de limpeza</option>
+          </select>
+      
+          <textarea name="descricao" rows="4" placeholder="Descrição detalhada" required></textarea>
+      
+          <div class="anexo">
+            <input type="file" name="ficheiro">
+            <button type="button" disabled>Anexar</button>
+          </div>
+      
+          <div class="submit">
+            <button type="submit">Enviar Ocorrência</button>
+          </div>
+        </form>
+      </div>
+      
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>EyesEverywhere</h4>
+        <p>Rua da Cultura, 125<br>4800-123 Guimarães, Portugal</p>
+        <p><strong>Telefone:</strong> +351 253 123 456</p>
+        <p><strong>Email:</strong> contacto@eyeseverywhere.pt</p>
+      </div>
+  
+      <div class="footer-col">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="about.html">Sobre nós</a></li>
+          <li><a href="#">Auditorias</a></li>
+          <li><a href="ocorrencias.html">Ocorrências</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-col">
+        <h4>Os nossos serviços</h4>
+        <ul>
+          <li>Monitorização de Monumentos</li>
+          <li>Auditoria de Trilhos Naturais</li>
+          <li>Geocaching Sustentável</li>
+          <li>Relatórios Públicos</li>
+        </ul>
+      </div>
+  
+      <div class="footer-col">
+        <h4>© 2025 EyesEverywhere</h4>
+        <p>Desenvolvido por EyesEverywhere Team</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© Copyright <strong>Moderna</strong> All Rights Reserved</p>
+      <p>Designed by <a href="#">BootstrapMade</a></p>
+    </div>
+  </footer>
+  
+
+  <script>
+    function mostrarSecao(id) {
+      const secoes = document.querySelectorAll('.secao-ocorrencia');
+      secoes.forEach(secao => secao.style.display = 'none');
+
+      document.getElementById(id).style.display = 'block';
+
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
