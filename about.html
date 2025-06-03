@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +37,8 @@
       <div class="preservar-texto">
         <h2>🌿 Preservar Hoje,<br>Garantir o Amanhã</h2>
         <p>
-          Atuamos todos os dias para assegurar que o património natural e histórico se mantém intacto e acessível para as futuras gerações.
+          Atuamos todos os dias para assegurar que o património natural e histórico se mantém intacto e acessível para
+          as futuras gerações.
           Através da tecnologia, educação e ação no terreno, construímos um legado de proteção ambiental e cultural.
         </p>
         <a href="#competencias" class="btn-verde">Saber Mais</a>
@@ -51,13 +53,14 @@
 
   <section class="cards">
     <div class="card">
-      <h2>1000</h2>
+      <h2 id="total-auditorias">...</h2>
       <p>Auditorias</p>
     </div>
     <div class="card">
-      <h2>562</h2>
+      <h2 id="ocorrencias-resolvidas">...</h2>
       <p>Ocorrências resolvidas</p>
     </div>
+
     <div class="card">
       <h2>&lt;48h</h2>
       <p>Tempo médio de resposta</p>
@@ -85,7 +88,8 @@
         <img src="img/monitorizacao.jpg" alt="Monitorização no Terreno">
         <div class="conteudo-card">
           <h3>Monitorização no Terreno</h3>
-          <p>Acompanhamento em tempo real com sensores, rondas de vigilância e relatórios de campo para identificar riscos precocemente.</p>
+          <p>Acompanhamento em tempo real com sensores, rondas de vigilância e relatórios de campo para identificar
+            riscos precocemente.</p>
         </div>
       </div>
 
@@ -93,7 +97,8 @@
         <img src="img/educacao.jpg" alt="Educação Ambiental e Cultural">
         <div class="conteudo-card">
           <h3>Educação Ambiental e Cultural</h3>
-          <p>Promovemos ações educativas junto de escolas, visitantes e comunidades locais, despertando interesse e respeito pelo património.</p>
+          <p>Promovemos ações educativas junto de escolas, visitantes e comunidades locais, despertando interesse e
+            respeito pelo património.</p>
         </div>
       </div>
 
@@ -101,7 +106,8 @@
         <img src="img/conservacao.jpg" alt="Ações de Conservação">
         <div class="conteudo-card">
           <h3>Ações de Conservação</h3>
-          <p>Limpeza, manutenção preventiva e restauro de locais históricos e naturais, assegurando a sua preservação.</p>
+          <p>Limpeza, manutenção preventiva e restauro de locais históricos e naturais, assegurando a sua preservação.
+          </p>
         </div>
       </div>
 
@@ -109,7 +115,8 @@
         <img src="img/auditorias.jpg" alt="Auditorias Técnicas">
         <div class="conteudo-card">
           <h3>Auditorias Técnicas</h3>
-          <p>Avaliações estruturais e técnicas em monumentos e trilhos para garantir segurança, estabilidade e acessibilidade.</p>
+          <p>Avaliações estruturais e técnicas em monumentos e trilhos para garantir segurança, estabilidade e
+            acessibilidade.</p>
         </div>
       </div>
 
@@ -117,7 +124,8 @@
         <img src="img/tecnologias.jpg" alt="Tecnologias de Informação">
         <div class="conteudo-card">
           <h3>Tecnologias de Informação</h3>
-          <p>Plataformas digitais, sensores inteligentes e dashboards interativos para análise e gestão em tempo real.</p>
+          <p>Plataformas digitais, sensores inteligentes e dashboards interativos para análise e gestão em tempo real.
+          </p>
         </div>
       </div>
 
@@ -132,7 +140,8 @@
       <div class="testemunho-card">
         <div class="aspas">“</div>
         <p class="mensagem">
-          A EyesEverywhere foi essencial na preservação de locais turísticos importantes, garantindo a sua conservação para futuras gerações.
+          A EyesEverywhere foi essencial na preservação de locais turísticos importantes, garantindo a sua conservação
+          para futuras gerações.
         </p>
         <h4 class="autor">Tiago Pinho</h4>
       </div>
@@ -202,5 +211,27 @@
     </div>
   </footer>
 
+  <script>
+    function contarItens(chave) {
+      const dados = JSON.parse(localStorage.getItem(chave));
+      return Array.isArray(dados) ? dados.length : 0;
+    }
+
+    function atualizarNumeros() {
+      const totalAuditorias = contarItens("auditorias") +
+        contarItens("auditoriasADECORRER") +
+        contarItens("auditoriasConcluidas");
+
+      const concluidas = contarItens("auditoriasConcluidas");
+
+      document.getElementById("total-auditorias").textContent = totalAuditorias;
+      document.getElementById("ocorrencias-resolvidas").textContent = concluidas;
+    }
+
+    atualizarNumeros();
+  </script>
+
+
 </body>
+
 </html>
