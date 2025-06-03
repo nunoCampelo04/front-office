@@ -7,7 +7,6 @@
   <title>Ocorrências - EyesEverywhere</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body>
@@ -53,98 +52,19 @@
           <input type="text" placeholder="Pesquisar por local ou referência..." class="barra-pesquisa">
           <button class="botao-pesquisar-interna">🔍</button>
         </div>
-
-        <div class="lista-ocorrencias">
-          <div class="ocorrencia-card a-decorrer">
-            <div class="info-topo">
-              <p><strong>#323</strong> – Passadiço do Sistelo</p>
-              <span class="data-ocorrencia">20/04/2025</span>
-            </div>
-            <p>Limpeza de vegetação acumulada e manutenção do corrimão.</p>
-          </div>
-
-          <div class="ocorrencia-card a-decorrer">
-            <div class="info-topo">
-              <p><strong>#322</strong> – Trilho da Peneda</p>
-              <span class="data-ocorrencia">15/04/2025</span>
-            </div>
-            <p>Inspeção em curso devido a possível instabilidade no terreno.</p>
-          </div>
-
-          <div class="ocorrencia-card a-decorrer">
-            <div class="info-topo">
-              <p><strong>#318</strong> – Castelo de Leiria</p>
-              <span class="data-ocorrencia">12/04/2025</span>
-            </div>
-            <p>Revisão estrutural em torre lateral — em fase de verificação.</p>
-          </div>
-
-          <div class="ocorrencia-card a-decorrer">
-            <div class="info-topo">
-              <p><strong>#315</strong> – Muralha Fernandina</p>
-              <span class="data-ocorrencia">08/04/2025</span>
-            </div>
-            <p>Inspeção de fissuras e infiltrações — aguarda relatório técnico.</p>
-          </div>
-
-          <div class="ocorrencia-card a-decorrer">
-            <div class="info-topo">
-              <p><strong>#310</strong> – Trilho do Rio Febros</p>
-              <span class="data-ocorrencia">02/04/2025</span>
-            </div>
-            <p>Remoção de lixo acumulado e substituição de corrimões partidos.</p>
-          </div>
-        </div>
+        <div class="lista-ocorrencias"></div>
       </div>
     </div>
 
-    <div id="concluido" class="secao-ocorrencia">
+    <div id="concluido" class="secao-ocorrencia" style="display: none;">
       <div class="bloco-ocorrencias">
         <div class="barra-pesquisa-wrapper">
           <input type="text" placeholder="Pesquisar por local ou referência..." class="barra-pesquisa">
           <button class="botao-pesquisar-interna">🔍</button>
         </div>
-
-        <div class="lista-ocorrencias">
-          <div class="ocorrencia-card concluido">
-            <div class="info-topo">
-              <p><strong>#301</strong> – Miradouro do Bom Jesus</p>
-              <span class="data-ocorrencia">20/02/2025</span>
-            </div>
-            <p>Reparação de guarda metálica e limpeza geral.</p>
-          </div>
-
-          <div class="ocorrencia-card concluido">
-            <div class="info-topo">
-              <p><strong>#287</strong> – Castelo de Almourol</p>
-              <span class="data-ocorrencia">10/02/2025</span>
-            </div>
-            <p>Reparação de guarda metálica e limpeza geral.</p>
-          </div>
-
-          <div class="ocorrencia-card concluido">
-            <div class="info-topo">
-              <p><strong>#278</strong> – Igreja de São Francisco</p>
-              <span class="data-ocorrencia">20/01/2025</span>
-            </div>
-            <p>Restauro das fachadas e limpeza do pátio exterior.</p>
-          </div>
-
-          <div class="ocorrencia-card concluido">
-            <div class="info-topo">
-              <p><strong>#266</strong> – Fortaleza de Valença</p>
-              <span class="data-ocorrencia">14/12/2024</span>
-            </div>
-            <p>Instalação de sinalética turística e reparação de muros.</p>
-          </div>
-        </div>
+        <div class="lista-ocorrencias"></div>
       </div>
     </div>
-
-
-
-
-
 
     <div id="novo" class="secao-ocorrencia" style="display: none;">
       <form class="formulario-ocorrencia">
@@ -213,7 +133,6 @@
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-
       </div>
     </div>
 
@@ -223,20 +142,57 @@
     </div>
   </footer>
 
-
   <script>
     function mostrarSecao(id) {
       const secoes = document.querySelectorAll('.secao-ocorrencia');
       secoes.forEach(secao => secao.style.display = 'none');
-
       document.getElementById(id).style.display = 'block';
 
       const tabs = document.querySelectorAll('.tab');
       tabs.forEach(tab => tab.classList.remove('active'));
-
       event.target.classList.add('active');
     }
+
+    function carregarOcorrencias() {
+      const aDecorrerContainer = document.querySelector('#adecorrer .lista-ocorrencias');
+      const concluidoContainer = document.querySelector('#concluido .lista-ocorrencias');
+
+      aDecorrerContainer.innerHTML = '';
+      concluidoContainer.innerHTML = '';
+
+      const ocorrenciasA = JSON.parse(localStorage.getItem('auditoriasADECORRER') || '[]');
+      const ocorrenciasC = JSON.parse(localStorage.getItem('auditoriasConcluidas') || '[]');
+
+      ocorrenciasA.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'ocorrencia-card a-decorrer';
+        card.innerHTML = `
+          <div class="info-topo">
+            <p><strong>#${item.id}</strong> – ${item.local}</p>
+            <span class="data-ocorrencia">${item.data}</span>
+          </div>
+          <p>${item.descricao}</p>
+        `;
+        aDecorrerContainer.appendChild(card);
+      });
+
+      ocorrenciasC.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'ocorrencia-card concluido';
+        card.innerHTML = `
+          <div class="info-topo">
+            <p><strong>#${item.id}</strong> – ${item.local}</p>
+            <span class="data-ocorrencia">${item.data}</span>
+          </div>
+          <p>${item.descricao}</p>
+        `;
+        concluidoContainer.appendChild(card);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarOcorrencias);
   </script>
+
   <script type="module" src="storage-service.js"></script>
   <script type="module" src="front-office.js"></script>
 </body>
